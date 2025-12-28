@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Discord - Mon Shop</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #111;
+            color: white;
+            padding: 20px;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .menu {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+            .menu a {
+                text-decoration: none;
+                color: white;
+                background: #5865F2;
+                padding: 10px 20px;
+                border-radius: 8px;
+                transition: 0.2s;
+            }
+
+                .menu a:hover {
+                    background: #4455CC;
+                }
+
+        /* Produits */
+        .products-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .product {
+            background: #1c1c1c;
+            width: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            padding: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+
+            .product:hover {
+                transform: scale(1.03);
+                transition: 0.2s;
+            }
+
+        .description {
+            background: #222;
+            padding: 10px;
+            border-radius: 5px;
+            min-height: 120px;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .available {
+            color: #00ff88;
+            font-weight: bold;
+        }
+
+        .unavailable {
+            color: #ff4444;
+            font-weight: bold;
+        }
+
+        button {
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: #5865F2;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+            button:disabled {
+                background: #555;
+                cursor: not-allowed;
+            }
+
+        /* Popup */
+        #overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            z-index: 500;
+        }
+
+        #payment {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            background: #222;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.7);
+            width: 450px;
+            max-width: 90%;
+            text-align: center;
+            z-index: 1000;
+        }
+
+            #payment button {
+                margin-top: 15px;
+            }
+
+            #payment .close-btn {
+                background: #ff4444;
+                margin-top: 10px;
+            }
+    </style>
+</head>
+<body>
+
+    <h1>🔥 Produits Discord 🔥</h1>
+    <div class="menu">
+        <a href="index.html">Accueil</a>
+        <a href="compte.html">Compte</a>
+        <a href="monnaie.html">Monnaie</a>
+    </div>
+
+    <div class="products-container">
+
+        <!-- PRODUIT BOOSTS -->
+        <div class="product">
+            <h3>Boosts de serveur 1 mois</h3>
+            <div class="description">
+                🔹 14 boosts pour votre serveur Discord.<br>
+                ⏰ Valables 30 jours, accès complet au serveur (niveau 3).<br>
+                🌟 Garantie 7 jours.
+            </div>
+            <p>Prix : <strong>11,30€</strong></p>
+            <p class="available">🟢 Disponible</p>
+            <button onclick="showPayment('redlock.bg@gmail.com','https://discord.gg/aSmkhucU2A')">Acheter</button>
+        </div>
+
+        <div class="product">
+            <h3>Boosts de serveur 3 mois</h3>
+            <div class="description">
+                🔹 Ce produit comprend 14 boosts pour votre serveur Discord.<br>
+                ⚡ Les boosts sont valides pendant 90 jours et donnent un accès complet aux avantages du serveur (niveau 3).<br>
+                🌟 Garantie de 7 jours.
+            </div>
+            <p>Prix : <strong>18€</strong></p>
+            <p class="available">🟢 Disponible</p>
+            <button onclick="showPayment('redlock.bg@gmail.com','https://discord.gg/aSmkhucU2A')">Acheter</button>
+        </div>
+
+        <!-- PRODUIT NITRO -->
+        <div class="product">
+            <h3>Nitro Basic</h3>
+            <div class="description">
+                🔶 Nitro Discord valable de 30 jours à 1 an.<br>
+                ⚡ Envoyé via lien cadeau Discord.<br>
+                🌟 Garantie 7 jours.
+            </div>
+            <p>Prix : <strong>2,20€</strong></p>
+            <p class="available">🟢 Disponible</p>
+            <button onclick="showPayment('redlock.bg@gmail.com','https://discord.gg/aSmkhucU2A')">Acheter</button>
+        </div>
+
+        <div class="product">
+            <h3>Nitro Boost</h3>
+            <div class="description">
+                🔹 Ce produit comprend un <strong>Nitro Discord</strong>.<br>
+                ⚡ Le Nitro est valable de 30 jours à 1 an et offre un accès complet à la plateforme. Vous le recevrez sous forme de lien cadeau envoyé en message privé sur Discord.<br>
+                🌟 Garantie de 7 jours : Si le Nitro cesse de fonctionner, contactez-nous pour obtenir un remplacement.
+            </div>
+            <p>Prix : <strong>4,80€</strong></p>
+            <p class="available">🟢 Disponible</p>
+            <button onclick="showPayment('redlock.bg@gmail.com','https://discord.gg/aSmkhucU2A')">Acheter</button>
+        </div>
+
+        <!-- PRODUIT MEMBRES -->
+        <div class="product">
+            <h3>Membres</h3>
+            <div class="description">
+                🔹 Ce produit comprend <strong>200 membres</strong> pour votre serveur Discord.<br>
+                ⚡ Les membres sont illimités dans le temps et sont réalistes.<br>
+                🌟 Garantie 30 jours : Si les membres quittent votre serveur, contactez-nous pour un remplacement.
+            </div>
+            <p>Prix : <strong>3,20€</strong></p>
+            <p class="available">🟢 Disponible</p>
+            <button onclick="showPayment('redlock.bg@gmail.com','https://discord.gg/aSmkhucU2A')">Acheter</button>
+        </div>
+
+        <!-- PRODUIT RESEAUX -->
+        <div class="product">
+            <h3>Boost Réseaux Sociaux</h3>
+            <div class="description">
+                🚀 Ce produit vous donne accès à un panel dédié au développement de vos réseaux sociaux.<br>
+                💳 Le paiement via PayPal n’est pas disponible, mais vous pouvez utiliser un compte bancaire, des cryptomonnaies ou d’autres portefeuilles numériques.<br>
+                🛡️ Garantie 30 jours : en cas de dysfonctionnement du panel, contactez-nous pour obtenir un remboursement.
+            </div>
+            <p>Prix : <strong>0,75€</strong></p>
+            <p class="available">🟢 Disponible</p>
+            <button onclick="showPayment('redlock.bg@gmail.com','https://discord.gg/aSmkhucU2A')">Acheter</button>
+        </div>
+
+    </div>
+
+
+    <!-- POPUP PAYPAL/DISCORD -->
+    <div id="overlay"></div>
+    <div id="payment">
+        <h2>Paiement</h2>
+        <p>PayPal : <strong id="paypalMail"></strong></p>
+        <p>Note PayPal : <strong>AUCUNE -> PAS DE DESCRIPTION</strong></p>
+        <button onclick="openDiscord()">Rejoindre le Discord</button><br>
+        <button class="close-btn" onclick="closePayment()">Fermer</button>
+    </div>
+
+    <script>
+        let discordLink = "";
+        function showPayment(paypal, discord) {
+            discordLink = discord;
+            document.getElementById("paypalMail").innerText = paypal;
+            document.getElementById("payment").style.display = "block";
+            document.getElementById("overlay").style.display = "block";
+        }
+        function closePayment() {
+            document.getElementById("payment").style.display = "none";
+            document.getElementById("overlay").style.display = "none";
+        }
+        function openDiscord() {
+            window.open(discordLink, "_blank");
+        }
+    </script>
+
+</body>
+</html>
